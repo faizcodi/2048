@@ -114,7 +114,7 @@
                 {
                 	for(j=0;j<4;j++)
                 	{
-                		cur=0;
+                		hasMergedOnce=cur=0;
                 		for(i=0;i<4;i++)
                 		{
                 			if(gameArray[i][j])
@@ -125,11 +125,11 @@
                 					gameArray[i][j]=0;
                 					haschanged=1;
                 				}
-                				if(0<cur && cur<4 && gameArray[cur][j]==gameArray[cur-1][j])
+                				if(0<cur && cur<4 && gameArray[cur][j]==gameArray[cur-1][j] && !hasMergedOnce)
 	                			{
 	                				gameArray[cur-1][j]+=gameArray[cur-1][j];
 	                				gameArray[cur][j]=0;
-	                				haschanged=1;
+	                				hasMergedOnce=haschanged=1;
 	                				cur--;
 	                			}
                 				cur++;
@@ -141,7 +141,7 @@
                 {
                 	for(i=0;i<4;i++)
                 	{
-                		cur=0;
+                		hasMergedOnce=cur=0;
                 		for(j=0;j<4;j++)
                 		{
                 			if(gameArray[i][j])
@@ -152,11 +152,11 @@
                 					gameArray[i][j]=0;
                 					haschanged=1;
                 				}
-                				if(0<cur && cur<4 && gameArray[i][cur]==gameArray[i][cur-1])
+                				if(0<cur && cur<4 && gameArray[i][cur]==gameArray[i][cur-1] && !hasMergedOnce)
 	                			{
 	                				gameArray[i][cur-1]+=gameArray[i][cur-1];
 	                				gameArray[i][cur]=0;
-	                				haschanged=1;
+	                				hasMergedOnce=haschanged=1;
 	                				cur--;
 	                			}
                 				cur++;
@@ -169,6 +169,7 @@
                 	for(i=0;i<4;i++)
                 	{
                 		cur=3;
+                		hasMergedOnce=0;
                 		for(j=3;j>=0;j--)
                 		{
                 			if(gameArray[i][j])
@@ -179,11 +180,11 @@
                 					gameArray[i][j]=0;
                 					haschanged=1;
                 				}
-                				if(0<=cur && cur<3 && gameArray[i][cur]==gameArray[i][cur+1])
+                				if(0<=cur && cur<3 && gameArray[i][cur]==gameArray[i][cur+1] && !hasMergedOnce)
 	                			{
 	                				gameArray[i][cur+1]+=gameArray[i][cur+1];
 	                				gameArray[i][cur]=0;
-	                				haschanged=1;
+	                				hasMergedOnce=haschanged=1;
 	                				cur++;
 	                			}
                 				cur--;
@@ -196,6 +197,7 @@
                 	for(j=0;j<4;j++)
                 	{
                 		cur=3;
+                		hasMergedOnce=0
                 		for(i=3;i>=0;i--)
                 		{
                 			if(gameArray[i][j])
@@ -206,11 +208,11 @@
                 					gameArray[i][j]=0;
                 					haschanged=1;
                 				}
-                				if(0<=cur && cur<3 && gameArray[cur][j]==gameArray[cur+1][j])
+                				if(0<=cur && cur<3 && gameArray[cur][j]==gameArray[cur+1][j] && !hasMergedOnce)
 	                			{
 	                				gameArray[cur+1][j]+=gameArray[cur+1][j];
 	                				gameArray[cur][j]=0;
-	                				haschanged=1;
+	                				hasMergedOnce=haschanged=1;
 	                				cur++;
 	                			}
                 				cur--;
